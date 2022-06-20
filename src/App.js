@@ -5,12 +5,11 @@ function App() {
     const [calcu, setCalcu] = useState(""); 
     const [result, setResult] = useState(""); 
 
-    const ops = ['+', '-', '*', '/', '.'];
+    const ops = ['+', '-', '*', '÷', '.'];
 
     const updateCalcu = value => {
       if (
-        ops.includes(value) && calcu === '' ||
-        ops.includes(value) && ops.includes(calcu.slice(-1))
+        (ops.includes(value) && calcu === '') || (ops.includes(value) && ops.includes(calcu.slice(-1)))
       ){
         return;
       }
@@ -18,7 +17,7 @@ function App() {
       setCalcu(calcu + value);
 
       if(!ops.includes(value)){
-        setResult(eval(calcu + value).toString());
+        setResult((calcu + value).toString());
       }
     }
 
@@ -38,6 +37,7 @@ function App() {
     }
 
     const calculate = () => {
+      // eslint-disable-next-line
       setCalcu(eval(calcu).toString());
     }
 
@@ -60,7 +60,7 @@ function App() {
           <button onClick={() => updateCalcu('+')}>+</button>
           <button onClick={() => updateCalcu('-')}>-</button>
           <button onClick={() => updateCalcu('*')}>*</button>
-          <button onClick={() => updateCalcu('/')}>/</button>
+          <button onClick={() => updateCalcu('÷')}>÷</button>
           <button onClick={deleteLast}>DEL</button>
          </div>
           <div className="digits">
