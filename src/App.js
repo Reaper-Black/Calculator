@@ -28,7 +28,7 @@ function App() {
 
       for (let i=1; i<10; i++){
         digits.push(
-          <button onClick={() => updateCalcu(i.toString)} key={i}>
+          <button onClick={() => updateCalcu(i.toString())} key={i}>
             {i}
           </button>
         )
